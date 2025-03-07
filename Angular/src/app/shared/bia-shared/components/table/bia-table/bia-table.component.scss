@@ -1,0 +1,53 @@
+:host {
+  flex-direction: column;
+}
+:host ::ng-deep {
+  p-table {
+    .searchTR {
+      .p-float-label {
+        .p-inputtext {
+          padding-top: 2px !important;
+        }
+      }
+    }
+    td,
+    th {
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.app-empty-message {
+  text-align: center !important;
+}
+
+table {
+  width: 100%;
+}
+
+.bia-table-select-col {
+  width: 60px;
+}
+
+.bia-column-icon {
+  position: relative;
+  top: 2px;
+}
+
+.bia-column-double,
+.bia-column-float,
+.bia-column-currency,
+.bia-column-number {
+  text-align: right !important;
+}
+
+.p-sortable-column[aria-sort='none'] {
+  p-sorticon {
+    display: none;
+  }
+}
+
+::ng-deep .p-datatable.singleSort .p-sortable-column .p-sortable-column-badge {
+  display: none;
+}

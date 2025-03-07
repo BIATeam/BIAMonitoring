@@ -1,0 +1,53 @@
+{
+  "BiaNet": {
+    "CommonFeatures": {
+      "ClientForHub": {
+        "SignalRUrl": "http://localhost/BIAMonitoring/WebApi/HubForClients"
+      }
+    },
+    "Environment": {
+      "Type": "DEV"
+    },
+    "EmailConfiguration": {
+      "From": "noreply-BIAMonitoring@the-mail-domain.bia",
+      "SmtpHost": "127.0.0.1",
+      "SmtpPort": 25
+    },
+    "Authentication": {
+      "LdapDomains": [
+        {
+          "Name": "DOMAIN_BIA_1",
+          "LdapName": "the-user-domain1-name.bia",
+          "ContainsGroup": true,
+          "ContainsUser": true
+        },
+        {
+          "Name": "DOMAIN_BIA_2",
+          "LdapName": "the-user-domain2-name.bia",
+          "ContainsGroup": true,
+          "ContainsUser": true
+        }
+        //{
+        //  "Name": "DOMAIN_BIA_3",
+        //  "LdapName": "the-user-domain3-name.bia",
+        //  "CredentialKeyInWindowsVault": "BIA:LDAP://the-user-domain3-name.bia",
+        //  "ContainsGroup": true,
+        //  "ContainsUser": true
+        //},
+        //{
+        //  "Name": "DOMAIN_BIA_SRV",
+        //  "LdapName": "the-server-domain-name.bia",
+        //  "CredentialKeyInWindowsVault": "BIA:LDAP://the-server-domain-name.bia",
+        //  "ContainsGroup": true,
+        //  "ContainsUser": false
+        //}
+      ]
+    },
+    "Roles": [
+      {
+        "Label": "Service",
+        "Type": "Fake"
+      }
+    ]
+  }
+}

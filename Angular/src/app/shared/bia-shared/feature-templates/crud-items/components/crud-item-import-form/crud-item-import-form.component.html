@@ -1,0 +1,242 @@
+<form class="container" [formGroup]="form">
+  <p-fileUpload
+    #fileUpload
+    mode="basic"
+    [chooseLabel]="'bia.browse' | translate"
+    chooseIcon="pi pi-download"
+    [customUpload]="true"
+    accept="text/csv"
+    (onSelect)="onFileSelected()">
+  </p-fileUpload>
+  <button
+    [disabled]="this.fileUpload.hasFiles() !== true"
+    pButton
+    label="{{ 'primeng.apply' | translate }}"
+    type="button"
+    (click)="onApply()"></button>
+  <ng-container *ngIf="hasDate === true">
+    <span class="p-float-label">
+      <p-dropdown
+        formControlName="dateFormat"
+        [options]="dateFormats"
+        (ngModelChange)="onSubmit()"
+        appendTo="body"
+        optionLabel="example"
+        optionValue="format"
+        placeholder="Select Date Format">
+      </p-dropdown>
+      <label>{{ 'import.dateFormat' | translate }}</label>
+    </span>
+
+    <span class="p-float-label">
+      <p-dropdown
+        formControlName="timeFormat"
+        [options]="timeFormats"
+        (ngModelChange)="onSubmit()"
+        appendTo="body"
+        optionLabel="example"
+        optionValue="format"
+        placeholder="Select Time Format">
+      </p-dropdown>
+      <label>{{ 'import.timeFormat' | translate }}</label>
+    </span>
+  </ng-container>
+
+  <ng-container *ngIf="crudConfiguration.importMode?.useDelete === true">
+    <div>
+      <p-checkbox
+        formControlName="useCurrentView"
+        class="mr-2"
+        (onChange)="onSubmit()"
+        [binary]="true"
+        inputId="chkUseCurrentView"></p-checkbox>
+      <label for="chkUseCurrentView">{{
+        'import.useCurrentView' | translate
+      }}</label>
+    </div>
+  </ng-container>
+</form>
+<br />
+
+<ng-container *ngIf="importData">
+  <p-accordion
+    *ngIf="importData.errorToSaves.length > 0"
+    class="w-full bia-import-accordion">
+    <p-accordionTab class="bia-import-tab-error">
+      <ng-template pTemplate="header">
+        <div class="flex align-items-center">
+          <i class="pi pi-exclamation-triangle mr-2"></i>
+          <span class="vertical-align-middle"
+            >{{ 'bia.errors' | translate }}({{
+              importData.errorToSaves.length
+            }})</span
+          >
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <p class="m-0">
+          <bia-table
+            [elements]="importData.errorToSaves"
+            [paginator]="false"
+            [totalRecord]="importData.errorToSaves.length"
+            [columnToDisplays]="displayedColumnErrors"
+            [pageSize]="importData.errorToSaves.length"
+            [configuration]="crudConfigurationError.fieldsConfig"
+            [showColSearch]="false"
+            [globalSearchValue]="''"
+            [canClickRow]="false"
+            [canSelectElement]="false"
+            [loading]="false"
+            scrollHeightValue="calc( 100vh - 440px)"
+            [isScrollable]="true"></bia-table>
+        </p>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+  <br />
+  <p-accordion class="w-full bia-import-accordion">
+    <p-accordionTab
+      [ngClass]="{ 'bia-import-selected': insertChecked === true }"
+      [disabled]="importData.toInserts.length === 0"
+      *ngIf="canUseInsert() === true">
+      <ng-template pTemplate="header">
+        <div class="flex align-items-center">
+          <p-checkbox
+            [(ngModel)]="insertChecked"
+            [binary]="true"
+            inputId="chkInsert"
+            [disabled]="importData.toInserts.length === 0"
+            (click)="$event.stopPropagation()"
+            class="mr-2"></p-checkbox>
+          <i class="pi pi-plus mr-2"></i>
+          <span class="vertical-align-middle"
+            >{{ 'bia.toAdd' | translate }}({{
+              importData.toInserts.length
+            }})</span
+          >
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <p class="m-0">
+          <bia-table
+            *ngIf="importData.toInserts.length > 0"
+            [elements]="importData.toInserts"
+            [paginator]="false"
+            [totalRecord]="importData.toInserts.length"
+            [columnToDisplays]="displayedColumns"
+            [pageSize]="importData.toInserts.length"
+            [configuration]="crudConfiguration.fieldsConfig"
+            [showColSearch]="false"
+            [globalSearchValue]="''"
+            [canClickRow]="false"
+            [canSelectElement]="false"
+            [loading]="false"
+            scrollHeightValue="calc( 100vh - 440px)"
+            [isScrollable]="true"></bia-table>
+        </p>
+      </ng-template>
+    </p-accordionTab>
+    <p-accordionTab
+      [ngClass]="{ 'bia-import-selected': updateChecked === true }"
+      [disabled]="importData.toUpdates.length === 0"
+      *ngIf="canUseUpdate() === true">
+      <ng-template pTemplate="header">
+        <div class="flex align-items-center">
+          <p-checkbox
+            [(ngModel)]="updateChecked"
+            [binary]="true"
+            inputId="chkUpdate"
+            [disabled]="importData.toUpdates.length === 0"
+            (click)="$event.stopPropagation()"
+            class="mr-2"></p-checkbox>
+          <i class="pi pi-sync mr-2"></i>
+          <span class="vertical-align-middle"
+            >{{ 'bia.toModify' | translate }}({{
+              importData.toUpdates.length
+            }})</span
+          >
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <p class="m-0">
+          <bia-table
+            *ngIf="importData.toUpdates.length > 0"
+            [elements]="importData.toUpdates"
+            [paginator]="false"
+            [totalRecord]="importData.toUpdates.length"
+            [columnToDisplays]="displayedColumns"
+            [pageSize]="importData.toUpdates.length"
+            [configuration]="crudConfiguration.fieldsConfig"
+            [showColSearch]="false"
+            [globalSearchValue]="''"
+            [canClickRow]="false"
+            [canSelectElement]="false"
+            [loading]="false"
+            scrollHeightValue="calc( 100vh - 440px)"
+            [isScrollable]="true"></bia-table>
+        </p>
+      </ng-template>
+    </p-accordionTab>
+    <p-accordionTab
+      [ngClass]="{ 'bia-import-selected': deleteChecked === true }"
+      [disabled]="importData.toDeletes.length === 0"
+      *ngIf="canUseDelete() === true">
+      <ng-template pTemplate="header">
+        <div class="flex align-items-center">
+          <p-checkbox
+            [(ngModel)]="deleteChecked"
+            [binary]="true"
+            inputId="chkDelete"
+            [disabled]="importData.toDeletes.length === 0"
+            (click)="$event.stopPropagation()"
+            class="mr-2"></p-checkbox>
+          <i class="pi pi-trash mr-2"></i>
+          <span class="mr-2 vertical-align-middle"
+            >{{ 'bia.toDelete' | translate }}({{
+              importData.toDeletes.length
+            }})</span
+          >
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <p class="m-0">
+          <bia-table
+            *ngIf="importData.toDeletes.length > 0"
+            [elements]="importData.toDeletes"
+            [paginator]="false"
+            [totalRecord]="importData.toDeletes.length"
+            [columnToDisplays]="displayedColumns"
+            [pageSize]="importData.toDeletes.length"
+            [configuration]="crudConfiguration.fieldsConfig"
+            [showColSearch]="false"
+            [globalSearchValue]="''"
+            [canClickRow]="false"
+            [canSelectElement]="false"
+            [loading]="false"
+            scrollHeightValue="calc( 100vh - 440px)"
+            [isScrollable]="true"></bia-table>
+        </p>
+      </ng-template>
+    </p-accordionTab>
+  </p-accordion>
+</ng-container>
+<br />
+<div class="flex flex-row gap-1 justify-content-end">
+  <button
+    pButton
+    icon="pi pi-times"
+    label="{{ 'bia.cancel' | translate }}"
+    type="button"
+    class="p-button-outlined"
+    (click)="onCancel()"></button>
+  <button
+    pButton
+    [disabled]="
+      updateChecked !== true && insertChecked !== true && deleteChecked !== true
+    "
+    label="{{ 'primeng.apply' | translate }}"
+    type="button"
+    (click)="onSave()"></button>
+</div>
+
+<bia-spinner *ngIf="loading" [overlay]="true"></bia-spinner>

@@ -1,0 +1,269 @@
+.bia-separator {
+  height: 24px;
+  border-left: 1px solid;
+  margin-right: 5px;
+}
+
+// classic-footer-theme
+bia-classic-footer {
+  @if ($is-dark) {
+    background-color: $biaMainBarColor;
+  } @else {
+    background-color: $biaAccentColor;
+  }
+
+  color: $biaColorOnBgAccentColor;
+}
+
+bia-ultima-sidebar .layout-sidebar-top .project-title {
+  color: white;
+}
+
+// classic-header-theme
+bia-classic-header {
+  .topbar {
+    background-color: $biaAccentColor;
+    color: white;
+  }
+
+  .mainbar {
+    background-color: $biaMainBarColor;
+  }
+
+  .mainbar {
+    .project-title {
+      @if ($is-dark) {
+        color: white;
+      } @else {
+        color: $biaAccentColor;
+      }
+    }
+
+    .p-menubar-root-list .p-state-active {
+      text-decoration: underline;
+    }
+
+    .p-menubar {
+      padding: 0px;
+    }
+  }
+}
+
+.layout-topbar .layout-topbar-start .project-title {
+  color: $biaColorOnBgAccentColor;
+}
+
+// classic-layout-theme
+bia-classic-layout,
+bia-ultima-layout {
+  .content,
+  .layout-content {
+    background-image: linear-gradient(
+        rgba($biaBgColor, 0.6),
+        rgba($biaBgColor, 0.6)
+      ),
+      url('../../assets/bia/img/bg-default.jpg');
+  }
+
+  &.no-margin {
+    section.content {
+      display: flex;
+      flex-flow: column;
+      bia-classic-page-layout,
+      bia-ultima-page-layout {
+        align-items: stretch;
+
+        div.mat-elevation-z2 {
+          margin-top: 0;
+          max-width: 100% !important;
+          padding: 0;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+// classic-page-layout-theme
+bia-classic-page-layout,
+bia-ultima-page-layout {
+  > div {
+    background-color: $biaBgColor;
+  }
+}
+
+// search-filter
+.bia-advanced-filter {
+  background-color: $biaBgHoverColor;
+}
+
+// bia-table-controller-theme
+bia-table-controller {
+  background-color: $biaBgHoverColor; // Same color in table
+}
+
+.bia-star-mandatory {
+  color: $biaRed;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.logo svg {
+  fill: $biaOrange;
+}
+
+// For table calc mode
+.bia-calc-form {
+  p-celleditor,
+  tfoot {
+    input {
+      width: 100%;
+    }
+    .p-inputtext {
+      padding: 0 !important;
+    }
+    .p-multiselect-label {
+      padding: 0 !important;
+    }
+  }
+  .p-datatable-tbody,
+  .p-datatable-tfoot {
+    td {
+      .bia-star-mandatory {
+        position: absolute;
+      }
+    }
+    td:not(.p-frozen-column) {
+      position: relative;
+    }
+  }
+}
+
+// For view
+bia-view-list {
+  .pi-star {
+    &.ng-star-inserted {
+      font-size: 0.8em;
+      padding-left: 2px;
+    }
+  }
+  .pi pi-edit {
+    font-size: 1.3em;
+  }
+}
+
+bia-ultima-layout {
+  --footer-height: 4rem;
+  --sidebar-width: 17rem;
+}
+
+.layout-container {
+  &.env-dev {
+    --environment-color: #{color-mix(
+        in srgb,
+        $biaMainBarColor 100%,
+        $biaBlue 100%
+      )};
+  }
+  &.env-int {
+    --environment-color: #{color-mix(
+        in srgb,
+        $biaMainBarColor 100%,
+        $biaGreen 100%
+      )};
+  }
+  &.env-uat {
+    --environment-color: #{color-mix(
+        in srgb,
+        $biaMainBarColor 100%,
+        $biaOrange 100%
+      )};
+  }
+  &.env-pra {
+    --environment-color: #{color-mix(
+        in srgb,
+        $biaMainBarColor 100%,
+        $biaRed 100%
+      )};
+  }
+  &.env-ppd {
+    --environment-color: #{color-mix(
+        in srgb,
+        $biaMainBarColor 100%,
+        $biaYellow 100%
+      )};
+  }
+}
+
+bia-ultima-layout bia-table-header {
+  //border-bottom: solid 1px var(--surface-500);
+  margin-top: -0.75rem;
+  // margin-left: -2.5rem;
+  // padding-left: 2.5rem;
+  // margin-right: -2.5rem;
+  // padding-right: 2.5rem;
+  display: block;
+}
+
+.table-compact {
+  position: relative;
+
+  bia-table-header > .header {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+bia-table-controller.table-controller-hidden {
+  display: none;
+}
+
+html .table-compact p-table .p-datatable .p-datatable-tbody > tr > td,
+body .table-compact p-table .p-datatable .p-datatable-tbody > tr > td,
+.table-compact p-table .p-datatable .p-datatable-tfoot > tr > td,
+.table-compact p-table .p-datatable .p-datatable-thead > tr > th {
+  padding: 0.125em 0.25em;
+}
+
+.table-compact
+  p-table
+  .p-datatable
+  .p-datatable-scrollable-table
+  > .p-datatable-tfoot {
+  bottom: -0.125em;
+}
+
+.table-compact p-table .p-datatable .p-paginator,
+.table-compact p-table .p-datatable .p-datatable-footer {
+  padding: 0 0.75rem;
+}
+
+.table-compact bia-table-controller {
+  padding-top: 0;
+  padding-bottom: 0.25rem;
+}
+
+// button max-width
+.p-button-label {
+  max-width: 8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// forms button always visible
+.p-dialog {
+  .p-dialog-content {
+    .bia-form:has(> .bia-form-fixed-buttons) {
+      padding-bottom: 1.5rem;
+      .bia-form-fixed-buttons:has(> button) {
+        background: var(--surface-f);
+        position: fixed;
+        bottom: 0;
+        right: 1rem;
+        left: 0;
+        padding: 0.75rem;
+        z-index: 5;
+      }
+    }
+  }
+}

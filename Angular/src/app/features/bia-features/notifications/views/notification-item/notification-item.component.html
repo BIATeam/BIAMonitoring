@@ -1,0 +1,4 @@
+<router-outlet></router-outlet>
+<bia-spinner
+  *ngIf="notificationService.loading$ | async"
+  [overlay]="true"></bia-spinner>

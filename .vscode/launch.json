@@ -1,0 +1,94 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Angular",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/Angular",
+      "sourceMaps": true
+    },
+    {
+      "name": "Angular + npm start",
+      "type": "msedge",
+      "request": "launch",
+      "preLaunchTask": "angular: start",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/Angular",
+      "sourceMaps": true
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "port": 9222,
+      "urlFilter": "http://localhost:4200/*",
+      "webRoot": "${workspaceFolder}/Angular"
+    },
+    {
+      "name": "DotNet WebApi",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "dotnet: build debug api",
+      "program": "${workspaceFolder}/DotNet/BIATeam.BIAMonitoring.Presentation.Api/bin/Debug/net8.0/BIATeam.BIAMonitoring.Presentation.Api.dll",
+      "args": [
+        "--urls=http://localhost:32128",
+        "--pathbase=/BIAMonitoring/WebApi",
+        "--hot-reload"
+      ],
+      "cwd": "${workspaceFolder}/DotNet/BIATeam.BIAMonitoring.Presentation.Api/bin/Debug/net8.0/",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+:32128)",
+        "uriFormat": "%s/BIAMonitoring/WebApi/swagger/index.html"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_USE_POLLING_FILE_WATCHER": "true",
+        "ASPNETCORE_PATHBASE": "/BIAMonitoring",
+        "ASPNETCORE_URLS": "http://localhost:32128/"
+      }
+    },
+    {
+      "name": "DotNet Worker",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "dotnet: build debug worker",
+      "program": "${workspaceFolder}/DotNet/BIATeam.BIAMonitoring.WorkerService/bin/Debug/net8.0/BIATeam.BIAMonitoring.WorkerService.dll",
+      "args": ["--hot-reload"],
+      "cwd": "${workspaceFolder}/DotNet/BIATeam.BIAMonitoring.WorkerService",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_USE_POLLING_FILE_WATCHER": "true"
+      },
+      "console": "internalConsole"
+    },
+    {
+      "name": "DotNet DeployDB",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "dotnet: build debug deploy db",
+      "program": "${workspaceFolder}/DotNet/BIATeam.BIAMonitoring.DeployDB/bin/Debug/net8.0/BIATeam.BIAMonitoring.DeployDB.dll",
+      "args": ["--hot-reload"],
+      "cwd": "${workspaceFolder}/DotNet/BIATeam.BIAMonitoring.DeployDB",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_USE_POLLING_FILE_WATCHER": "true"
+      },
+      "console": "internalConsole"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Full Stack",
+      "configurations": ["DotNet WebApi", "Angular + npm start"]
+    }
+  ]
+}

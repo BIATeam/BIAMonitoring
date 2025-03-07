@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "BIATeam.BIAMonitoring.DeployDB": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "DockerfileRunArguments": "--add-host=host.docker.internal:host-gateway",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Docker",
+        "ConnectionStrings__BIAMonitoringDatabase": "data source=host.docker.internal;initial catalog=BIAMonitoring;integrated security=False;User Id=SQLUser_BIAMonitoring_DEV_U;Password=SQLUser_BIAMonitoring_DEV_U;MultipleActiveResultSets=True;Encrypt=False;App=BIAMonitoring"
+      }
+    },
+    "Podman": {
+      "commandName": "Docker",
+      "DockerfileRunArguments": "--network bia_network --name biamonitoring_deploydb_container",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Podman",
+        "ConnectionStrings__BIAMonitoringDatabase": "data source=mssql_container,14330;initial catalog=BIAMonitoring;integrated security=False;User Id=SQLUser_BIA_DEV_U;Password=<YourStrong!Passw0rd2>;MultipleActiveResultSets=True;Encrypt=False;App=BIAMonitoring"
+      }
+    }
+  }
+}

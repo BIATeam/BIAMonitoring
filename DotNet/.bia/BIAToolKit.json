@@ -1,0 +1,302 @@
+[
+  {
+    "Feature": "CRUD",
+    "Type": "CRUD",
+    "FeatureName": "Plane",
+    "FeatureNamePlural": "Planes",
+    "FeatureDomain":  "Plane",
+    "ZipName": "crud.zip",
+    "Contains": {
+      "Include": [
+        "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\Plane\\PlanesController.cs",
+        "BIATeam.BIAMonitoring.Application\\Plane\\PlaneAppService.cs",
+        "BIATeam.BIAMonitoring.Application\\Plane\\IPlaneAppService.cs",
+        "BIATeam.BIAMonitoring.Domain\\Plane\\Mappers\\PlaneMapper.cs",
+        "BIATeam.BIAMonitoring.Domain\\Plane\\Entities\\Plane.cs",
+        "BIATeam.BIAMonitoring.Domain.Dto\\Plane\\PlaneDto.cs"
+      ],
+      "Exclude": []
+    },
+    "Children": [],
+    "Options": [],
+    "AdaptPaths": [
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Application\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "Plane\\",
+            "ToRelativePathNoParent": "{DomainName}\\"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Application.([A-Za-z0-9_]+)$",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      },
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "Plane\\",
+            "ToRelativePathNoParent": "{DomainName}\\"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Controllers.([A-Za-z0-9_]+)$",
+            "NoParentValue": "{DomainName}"
+          },
+          {
+            "RegexMatch": ".*using BIATeam.BIAMonitoring.Application.([A-Za-z0-9_]+);",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      }
+    ],
+    "Partial": [
+      "BIATeam.BIAMonitoring.Presentation.Api\\bianetconfig.json",
+      "BIATeam.BIAMonitoring.Crosscutting.Ioc\\IocContainer.cs",
+      "BIATeam.BIAMonitoring.Crosscutting.Common\\Rights.cs"
+    ]
+  },
+  {
+    "Feature": "CRUD (with parent)",
+    "Type": "CRUD",
+    "FeatureName": "Engine",
+    "FeatureNamePlural": "Engines",
+    "FeatureDomain": "Plane",
+    "ZipName": "crud-parent.zip",
+    "Contains": {
+      "Include": [
+        "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\Plane\\EnginesController.cs",
+        "BIATeam.BIAMonitoring.Application\\Plane\\EngineAppService.cs",
+        "BIATeam.BIAMonitoring.Application\\Plane\\IEngineAppService.cs",
+        "BIATeam.BIAMonitoring.Domain\\Plane\\Mappers\\EngineMapper.cs",
+        "BIATeam.BIAMonitoring.Domain\\Plane\\Entities\\Engine.cs",
+        "BIATeam.BIAMonitoring.Domain\\Plane\\Specifications\\EngineSpecification.cs",
+        "BIATeam.BIAMonitoring.Domain.Dto\\Plane\\EngineDto.cs"
+      ],
+      "Exclude": []
+    },
+    "Children": [],
+    "NeedParent": "true",
+    "Parents": [
+      {
+        "Name": "Plane",
+        "NamePlural": "Planes",
+        "DomainName": "Plane",
+        "IsPrincipal": "true",
+        "AdaptPaths": [
+          {
+            "RootPath": "BIATeam.BIAMonitoring.Application\\",
+            "InitialDeepLevel": 0,
+
+            "MoveFiles": [
+              {
+                "FromRelativePath": "Plane\\",
+                "ToRelativePathWithParent": "{ParentDomainName}\\"
+              }
+            ]
+          },
+          {
+            "RootPath": "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\",
+            "InitialDeepLevel": 0,
+
+            "MoveFiles": [
+              {
+                "FromRelativePath": "Plane\\",
+                "ToRelativePathWithParent": "{ParentDomainName}\\"
+              }
+            ]
+          },
+          {
+            "RootPath": "BIATeam.BIAMonitoring.Domain\\",
+            "InitialDeepLevel": 0,
+
+            "MoveFiles": [
+              {
+                "FromRelativePath": "Plane\\Specifications\\EngineSpecification.cs",
+                "ToRelativePathWithParent": "{ParentDomainName}\\Specifications\\{NewCrudNamePascalSingular}Specification.cs"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Options": [],
+    "Partial": [
+      "BIATeam.BIAMonitoring.Crosscutting.Common\\Rights.cs",
+      "BIATeam.BIAMonitoring.Presentation.Api\\bianetconfig.json"
+    ]
+  },
+  {
+    "Feature": "Option",
+    "Type": "Option",
+    "FeatureName": "Country",
+    "FeatureNamePlural": "Countries",
+    "FeatureDomain": "AircraftMaintenanceCompany",
+    "DisplayItemName": "Name",
+    "ZipName": "option.zip",
+    "Contains": {
+      "Include": [
+        "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\AircraftMaintenanceCompany\\CountryOptionsController.cs",
+        "BIATeam.BIAMonitoring.Application\\AircraftMaintenanceCompany\\CountryOptionAppService.cs",
+        "BIATeam.BIAMonitoring.Application\\AircraftMaintenanceCompany\\ICountryOptionAppService.cs",
+        "BIATeam.BIAMonitoring.Domain\\AircraftMaintenanceCompany\\Mappers\\CountryOptionMapper.cs",
+        "BIATeam.BIAMonitoring.Domain\\AircraftMaintenanceCompany\\Entities\\Country.cs"
+      ],
+      "Exclude": []
+    },
+    "Children": [],
+    "AdaptPaths": [
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Application\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "AircraftMaintenanceCompany\\",
+            "ToRelativePathNoParent": "{DomainName}\\"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Application.([A-Za-z0-9_]+)$",
+            "NoParentValue": "{DomainName}"
+          },
+          {
+            "RegexMatch": ".*using MyCompany.MyFirstProject.Domain.([A-Za-z0-9_]+).Mappers;",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      },
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "AircraftMaintenanceCompany\\",
+            "ToRelativePathNoParent": "{DomainName}\\"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Controllers.([A-Za-z0-9_]+)$",
+            "NoParentValue": "{DomainName}"
+          },
+          {
+            "RegexMatch": ".*using MyCompany.MyFirstProject.Application.([A-Za-z0-9_]+);",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      },
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Domain\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "AircraftMaintenanceCompany\\Mappers",
+            "ToRelativePathNoParent": "{DomainName}\\Mappers"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Domain.([A-Za-z0-9_]+).Mappers",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      }
+    ],
+    "Options": [],
+    "Partial": [
+      "BIATeam.BIAMonitoring.Presentation.Api\\bianetconfig.json",
+      "BIATeam.BIAMonitoring.Crosscutting.Common\\Rights.cs"
+    ]
+  },
+  {
+    "Feature": "Team",
+    "Type": "Team",
+    "FeatureName": "MaintenanceTeam",
+    "FeatureNamePlural": "MaintenanceTeams",
+    "FeatureDomain": "AircraftMaintenanceCompany",
+    "ZipName": "team.zip",
+    "Contains": {
+      "Include": [
+        "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\AircraftMaintenanceCompany\\MaintenanceTeamsController.cs",
+        "BIATeam.BIAMonitoring.Application\\AircraftMaintenanceCompany\\MaintenanceTeamAppService.cs",
+        "BIATeam.BIAMonitoring.Application\\AircraftMaintenanceCompany\\IMaintenanceTeamAppService.cs",
+        "BIATeam.BIAMonitoring.Domain\\AircraftMaintenanceCompany\\Mappers\\MaintenanceTeamMapper.cs",
+        "BIATeam.BIAMonitoring.Domain\\AircraftMaintenanceCompany\\Entities\\MaintenanceTeam.cs",
+        "BIATeam.BIAMonitoring.Domain.Dto\\AircraftMaintenanceCompany\\MaintenanceTeamDto.cs"
+      ],
+      "Exclude": []
+    },
+    "Children": [],
+    "AdaptPaths": [
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Application\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "AircraftMaintenanceCompany\\",
+            "ToRelativePathNoParent": "{DomainName}\\"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Application.([A-Za-z0-9_]+)$",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      },
+      {
+        "RootPath": "BIATeam.BIAMonitoring.Presentation.Api\\Controllers\\",
+        "InitialDeepLevel": 0,
+
+        "MoveFiles": [
+          {
+            "FromRelativePath": "AircraftMaintenanceCompany\\",
+            "ToRelativePathNoParent": "{DomainName}\\"
+          }
+        ],
+
+        "ReplaceInFiles": [
+          {
+            "RegexMatch": "^namespace\\s+(?:[A-Za-z0-9_]+\\.)+Controllers.([A-Za-z0-9_]+)$",
+            "NoParentValue": "{DomainName}"
+          },
+          {
+            "RegexMatch": ".*using BIATeam.BIAMonitoring.Application.([A-Za-z0-9_]+);",
+            "NoParentValue": "{DomainName}"
+          }
+        ]
+      }
+    ],
+    "Options": [],
+    "Partial": [
+      "BIATeam.BIAMonitoring.Crosscutting.Common\\Rights.cs",
+      "BIATeam.BIAMonitoring.Crosscutting.Common\\Enum\\TeamTypeId.cs",
+      "BIATeam.BIAMonitoring.Crosscutting.Common\\Enum\\RoleId.cs",
+      "BIATeam.BIAMonitoring.Infrastructure.Data\\ModelBuilders\\UserModelBuilder.cs",
+      "BIATeam.BIAMonitoring.Presentation.Api\\bianetconfig.json",
+      "BIATeam.BIAMonitoring.Domain\\User\\TeamConfig.cs",
+      "BIATeam.BIAMonitoring.Domain\\User\\Mappers\\TeamMapper.cs",
+      "BIATeam.BIAMonitoring.Presentation.API\\Controllers\\User\\AuthController.cs"
+    ]
+  }
+]

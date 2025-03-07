@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <bia-table-header
+      [headerTitle]="'notification.listOf' | translate"
+      [canAdd]="canAdd"
+      [canDelete]="canDelete"
+      [canExportCSV]="true"
+      (create)="onCreate()"
+      (exportCSV)="onExportCSV()"
+      (delete)="onDelete()"
+      [selectedElements]="selectedNotifications"></bia-table-header>
+    <bia-table-controller
+      [defaultPageSize]="defaultPageSize"
+      [columns]="columns"
+      [columnToDisplays]="displayedColumns"
+      (displayedColumnsChange)="displayedColumnsChanged($event)"
+      (filter)="searchGlobalChanged($event)"
+      (clearFilters)="onClearFilters()"
+      (toggleSearch)="onToggleSearch()"
+      (viewChange)="onViewChange($event)"
+      [tableStateKey]="tableStateKey"
+      [hasColumnFilter]="hasColumnFilter"></bia-table-controller>
+    <bia-table
+      (pageSizeChange)="onPageSizeChange($event)"
+      [elements]="(notifications$ | async) ?? []"
+      [totalRecord]="(totalCount$ | async) ?? 0"
+      [columnToDisplays]="displayedColumns"
+      [pageSize]="pageSize"
+      (pageSizeChange)="onPageSizeChange($event)"
+      [configuration]="tableConfiguration"
+      [showColSearch]="showColSearch"
+      [globalSearchValue]="globalSearchValue"
+      [canClickRow]="canRead"
+      [canSelectElement]="canDelete"
+      [loading]="(loading$ | async) ?? false"
+      (clickRowId)="onDetail($event)"
+      (loadLazy)="onLoadLazy($event)"
+      [viewPreference]="viewPreference"
+      [tableStateKey]="tableStateKey"
+      (selectedElementsChanged)="onSelectedElementsChanged($event)"></bia-table>
+  </div>
+</div>

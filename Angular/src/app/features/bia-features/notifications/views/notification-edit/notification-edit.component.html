@@ -1,0 +1,17 @@
+<bia-notification-form
+  *ngIf="notificationService.notification$ | async; let notification"
+  [notification]="notification"
+  [notificationTypeOptions]="
+    (notificationOptionsService.notificationTypeOptions$ | async) ?? []
+  "
+  [roleOptions]="(notificationOptionsService.roleOptions$ | async) ?? []"
+  [userOptions]="(notificationOptionsService.userOptions$ | async) ?? []"
+  [teamOptions]="(notificationOptionsService.teamOptions$ | async) ?? []"
+  [languageOptions]="
+    (notificationOptionsService.languageOptions$ | async) ?? []
+  "
+  (cancel)="onCancelled()"
+  (save)="onSubmitted($event)"></bia-notification-form>
+<bia-spinner
+  *ngIf="notificationService.loading$ | async"
+  [overlay]="true"></bia-spinner>

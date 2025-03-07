@@ -1,0 +1,60 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": true,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:32128/BIAMonitoring/WebApi",
+      "sslPort": 0
+    },
+    "iis": {
+      "applicationUrl": "http://localhost/BIAMonitoring/WebApi",
+      "sslPort": 0
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development4iis"
+      },
+      "ancmHostingModel": "InProcess"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:32128/swagger",
+      "publishAllPorts": true,
+      "DockerfileRunArguments": "--add-host=host.docker.internal:host-gateway -p 32128:8080",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Docker",
+        "KC_SA_USERNAME": "dmeu-int-keycloak-service-account",
+        "KC_SA_PASSWORD": "************",
+        "ConnectionStrings__BIAMonitoringDatabase": "data source=host.docker.internal;initial catalog=BIAMonitoring;integrated security=False;User Id=SQLUser_BIAMonitoring_DEV_RW;Password=SQLUser_BIAMonitoring_DEV_RW;MultipleActiveResultSets=True;Encrypt=False;App=BIAMonitoring"
+      }
+    },
+    "Podman": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:32128/swagger",
+      "publishAllPorts": true,
+      "DockerfileRunArguments": "--network bia_network --name biamonitoring_api_container -p 32128:8080",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Podman",
+        "KC_SA_USERNAME": "dmeu-int-keycloak-service-account",
+        "KC_SA_PASSWORD": "************",
+        "ConnectionStrings__BIAMonitoringDatabase": "data source=mssql_container,14330;initial catalog=BIAMonitoring;integrated security=False;User Id=SQLUser_BIA_DEV_RW;Password=<YourStrong!Passw0rd3>;MultipleActiveResultSets=True;Encrypt=False;App=BIAMonitoring"
+      }
+    }
+  }
+}
