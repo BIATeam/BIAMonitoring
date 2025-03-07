@@ -54,31 +54,11 @@
       },
       "LdapDomains": [
         {
-          "Name": "DOMAIN_BIA_1",
-          "LdapName": "the-user-domain1-name.bia",
+          "Name": ".",
+          "LdapName": ".",
           "ContainsGroup": true,
           "ContainsUser": true
-        },
-        {
-          "Name": "DOMAIN_BIA_2",
-          "LdapName": "the-user-domain2-name.bia",
-          "ContainsGroup": true,
-          "ContainsUser": true
-        } //,
-        //{
-        //  "Name": "DOMAIN_BIA_3",
-        //  "LdapName": "the-user-domain3-name.bia",
-        //  "CredentialKeyInWindowsVault": "BIA:LDAP://the-user-domain3-name.bia",
-        //  "ContainsGroup": true,
-        //  "ContainsUser": true
-        //},
-        //{
-        //  "Name": "DOMAIN_BIA_SRV",
-        //  "LdapName": "the-server-domain-name.bia",
-        //  "CredentialKeyInWindowsVault": "BIA:LDAP://the-server-domain-name.bia",
-        //  "ContainsGroup": true,
-        //  "ContainsUser": false
-        //}
+        }
       ]
     },
     "Roles": [
@@ -90,36 +70,6 @@
         "Label": "Admin",
         "Type": "Fake"
       }
-      //{
-      //  "Label": "User",
-      //  "Type": "Ldap",
-      //  "LdapGroups": [
-      //    {
-      //      "AddUsersOfDomains": [ "DOMAIN_BIA_1", "DOMAIN_BIA_2" ],
-      //      "RecursiveGroupsOfDomains": [ "DOMAIN_BIA_1", "DOMAIN_BIA_2" ],
-      //      "LdapName": "DOMAIN_BIA_1\\PREFIX-APP_BIAMonitoring_INT_User",
-      //      "Domain": "DOMAIN_BIA_1"
-      //    }//,
-      //    //{
-      //    //  "AddUsersOfDomains": [ "DOMAIN_BIA_3" ],
-      //    //  "RecursiveGroupsOfDomains": [ "DOMAIN_BIA_3", "DOMAIN_BIA_SRV" ],
-      //    //  "LdapName": "DOMAIN_BIA_3\\PREFIX-APP_BIAMonitoring_INT_User",
-      //    //  "ContainsOnlyUsers": true,
-      //    //  "Domain": "DOMAIN_BIA_SRV"
-      //    //}
-      //  ]
-      //},
-      //{
-      //  "Label": "Admin",
-      //  "Type": "Ldap",
-      //  "LdapGroups": [
-      //    {
-      //      "RecursiveGroupsOfDomains": [ "DOMAIN_BIA_1", "DOMAIN_BIA_2" ],
-      //      "LdapName": "DOMAIN_BIA_1\\PREFIX-APP_BIAMonitoring_INT_Admin",
-      //      "Domain": "DOMAIN_BIA_1"
-      //    }
-      //  ]
-      //}
     ],
     "UserProfile": {
       //remove url for faster debug
@@ -133,20 +83,45 @@
     },
     "PermissionsByEnv": [
       {
-        "Names": [ "User_ListAD", "User_Add", "User_Delete", "User_Save" ],
-        "Roles": [ "Admin" ]
+        "Names": [
+          "User_ListAD",
+          "User_Add",
+          "User_Delete",
+          "User_Save"
+        ],
+        "Roles": [
+          "Admin"
+        ]
       },
       {
-        "Names": [ "User_List_Access", "User_List", "User_Read", "User_Sync", "User_UpdateRoles" ],
-        "Roles": [ "Admin" ]
+        "Names": [
+          "User_List_Access",
+          "User_List",
+          "User_Read",
+          "User_Sync",
+          "User_UpdateRoles"
+        ],
+        "Roles": [
+          "Admin"
+        ]
       },
       {
-        "Names": [ "User_UpdateRoles" ],
-        "Roles": [ "Admin" ]
+        "Names": [
+          "User_UpdateRoles"
+        ],
+        "Roles": [
+          "Admin"
+        ]
       },
       {
-        "Names": [ "User_ListAD", "User_Add", "User_Save" ],
-        "Roles": [ "Site_Admin" ]
+        "Names": [
+          "User_ListAD",
+          "User_Add",
+          "User_Save"
+        ],
+        "Roles": [
+          "Site_Admin"
+        ]
       }
     ]
   }
