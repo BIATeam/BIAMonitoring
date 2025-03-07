@@ -3,12 +3,12 @@
     "Environment": {
       "Type": "DEV",
       // UrlMatomo shoulld now contain the name of the php and js (originaly matomo.js & matomo.php) => rename to bypass ublock
-      "UrlMatomo": "https://matomo-int.the-shared-tools-domain-name.bia/matomo(torename)",
+      "UrlMatomo": "",
       "SiteIdMatomo": "1"
     },
     "CommonFeatures": {
       "ClientForHub": {
-        "SignalRUrl": "http://localhost/BIAMonitoring/WebApi/HubForClients"
+        "SignalRUrl": "http://localhost:32128/BIAMonitoring/WebApi/HubForClients"
       }
     },
     "ApiFeatures": {
@@ -16,11 +16,11 @@
         "IsActive": true
       },
       "DelegateJobToWorker": {
-        "MonitoringUrl": "http://localhost/BIAMonitoring/WebApi/hangfire"
+        "MonitoringUrl": "http://localhost:32128/BIAMonitoring/WebApi/hangfire"
       }
     },
     "Security": {
-      "Audience": "http://localhost:4200"
+      "Audience": "http://localhost:4200,http://localhost:4201"
     },
     "EmailConfiguration": {
       "From": "noreply-BIAMonitoring@the-mail-domain.bia",
