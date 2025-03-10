@@ -54,8 +54,8 @@
       },
       "LdapDomains": [
         {
-          "Name": ".",
-          "LdapName": ".",
+          "Name": "ONE",
+          "LdapName": "one.ad",
           "ContainsGroup": true,
           "ContainsUser": true
         }
