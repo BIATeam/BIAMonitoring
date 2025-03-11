@@ -2,7 +2,7 @@
 //     Copyright (c) BIATeam. All rights reserved.
 // </copyright>
 
-namespace BIATeam.BIAMonitoring.Domain.Hangfire.Entities
+namespace BIATeam.BIAMonitoring.Domain.Database.Entities
 {
     using BIA.Net.Core.Domain;
     using BIATeam.BIAMonitoring.Domain.SupportTeam.Entities;

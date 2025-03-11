@@ -1,4 +1,4 @@
-namespace BIATeam.BIAMonitoring.Domain.Hangfire.Entities
+namespace BIATeam.BIAMonitoring.Domain.Database.Entities
 {
     using BIA.Net.Core.Domain;
 

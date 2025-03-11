@@ -1,12 +1,16 @@
+// <copyright file="DatabaseModelBuilder.cs" company="BIATeam">
+//     Copyright (c) BIATeam. All rights reserved.
+// </copyright>
+
 namespace BIATeam.BIAMonitoring.Infrastructure.Data.ModelBuilders
 {
-    using BIATeam.BIAMonitoring.Domain.Hangfire.Entities;
+    using BIATeam.BIAMonitoring.Domain.Database.Entities;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// Class used to update the model builder for Hangfire domain.
     /// </summary>
-    public static class HangfireModelBuilder
+    public static class DatabaseModelBuilder
     {
         /// <summary>
         /// Create the Hangfire model.

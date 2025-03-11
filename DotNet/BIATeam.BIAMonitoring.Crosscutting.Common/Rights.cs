@@ -327,6 +327,34 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Common
         }
 
         // BIAToolKit - Begin Rights
+        // BIAToolKit - Begin Partial Rights DbEngineType
+
+        /// <summary>
+        /// The dbEngingeTypes rights.
+        /// </summary>
+        public static class DbEngingeTypes
+        {
+            /// <summary>
+            /// The right to access to the list of dbEngingeTypes (options only).
+            /// </summary>
+            public const string Options = "DbEngineType_Options";
+        }
+
+        // BIAToolKit - End Partial Rights DbEngineType
+        // BIAToolKit - Begin Partial Rights HangfireVersion
+
+        /// <summary>
+        /// The hangfireVersions rights.
+        /// </summary>
+        public static class HangfireVersions
+        {
+            /// <summary>
+            /// The right to access to the list of hangfireVersions (options only).
+            /// </summary>
+            public const string Options = "HangfireVersion_Options";
+        }
+
+        // BIAToolKit - End Partial Rights HangfireVersion
         // BIAToolKit - End Rights
     }
 }

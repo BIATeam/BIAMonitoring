@@ -125,6 +125,20 @@
     ],
     "Permissions": [
       // BIAToolKit - Begin Config
+      // BIAToolKit - Begin Partial Config DbEngineType
+      // DbEngineType
+      {
+        "Name": "DbEngineType_Options",
+        "Roles": [ "Admin", "Site_Member" ]
+      },
+      // BIAToolKit - End Partial Config DbEngineType
+      // BIAToolKit - Begin Partial Config HangfireVersion
+      // HangfireVersion
+      {
+        "Name": "HangfireVersion_Options",
+        "Roles": [ "Admin", "Site_Member" ]
+      },
+      // BIAToolKit - End Partial Config HangfireVersion
       // BIAToolKit - End Config
       // Home
       {
