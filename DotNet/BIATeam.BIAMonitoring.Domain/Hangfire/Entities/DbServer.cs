@@ -1,6 +1,11 @@
+// <copyright file="DbServer.cs" company="BIATeam">
+//     Copyright (c) BIATeam. All rights reserved.
+// </copyright>
+
 namespace BIATeam.BIAMonitoring.Domain.Hangfire.Entities
 {
     using BIA.Net.Core.Domain;
+    using BIATeam.BIAMonitoring.Domain.SupportTeam.Entities;
 
     /// <summary>
     /// The DbServer entity.
@@ -23,8 +28,18 @@ namespace BIATeam.BIAMonitoring.Domain.Hangfire.Entities
         public string ConnectionString { get; set; }
 
         /// <summary>
+        /// Gets or sets the template UrlDashboard.
+        /// </summary>
+        public string TemplateUrlDashboard { get; set; }
+
+        /// <summary>
         /// Gets or sets the engine type.
         /// </summary>
         public DbEngineType EngineType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the support team.
+        /// </summary>
+        public SupportTeam SupportTeam { get; set; }
     }
 }
