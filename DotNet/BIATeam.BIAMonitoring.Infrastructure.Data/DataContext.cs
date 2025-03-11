@@ -134,6 +134,7 @@ namespace BIATeam.BIAMonitoring.Infrastructure.Data
             ViewModelBuilder.CreateModel(modelBuilder);
             NotificationModelBuilder.CreateModel(modelBuilder);
             AuditModelBuilder.CreateModel(modelBuilder);
+            HangfireModelBuilder.CreateModel(modelBuilder);
             this.OnEndModelCreating(modelBuilder);
         }
     }
