@@ -5,8 +5,14 @@
 namespace BIATeam.BIAMonitoring.Infrastructure.Data
 {
     using System.Threading.Tasks;
+#if BIA_FRONT_FEATURE
     using Audit.EntityFramework;
+#endif
     using BIA.Net.Core.Infrastructure.Data;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+#if BIA_FRONT_FEATURE
     using BIATeam.BIAMonitoring.Domain.Audit.Entities;
     using BIATeam.BIAMonitoring.Domain.Notification.Entities;
     using BIATeam.BIAMonitoring.Domain.Site.Entities;
@@ -14,14 +20,14 @@ namespace BIATeam.BIAMonitoring.Infrastructure.Data
     using BIATeam.BIAMonitoring.Domain.User.Entities;
     using BIATeam.BIAMonitoring.Domain.View.Entities;
     using BIATeam.BIAMonitoring.Infrastructure.Data.ModelBuilders;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Logging;
+#endif
 
     /// <summary>
     /// The database context.
     /// </summary>
+#if BIA_FRONT_FEATURE
     [AuditDbContext(Mode = AuditOptionMode.OptIn, IncludeEntityObjects = false, AuditEventType = "{database}_{context}")]
+#endif
     public class DataContext : BiaDataContext
     {
         /// <summary>
@@ -42,6 +48,7 @@ namespace BIATeam.BIAMonitoring.Infrastructure.Data
             this.logger.LogDebug("----------------Create Context--------------");
         }
 
+#if BIA_FRONT_FEATURE
         /// <summary>
         /// Gets or sets the Plane DBSet.
         /// </summary>
@@ -111,6 +118,7 @@ namespace BIATeam.BIAMonitoring.Infrastructure.Data
         /// Gets or sets the notification type DBSet.
         /// </summary>
         public DbSet<NotificationTypeTranslation> NotificationTypeTranslations { get; set; }
+#endif
 
         /// <summary>
         /// Releases the allocated resources for this context.
@@ -127,6 +135,7 @@ namespace BIATeam.BIAMonitoring.Infrastructure.Data
         {
             // modelBuilder.HasDefaultSchema("dbo")
             base.OnModelCreating(modelBuilder);
+#if BIA_FRONT_FEATURE
 
             TranslationModelBuilder.CreateModel(modelBuilder);
             SiteModelBuilder.CreateSiteModel(modelBuilder);
@@ -135,6 +144,7 @@ namespace BIATeam.BIAMonitoring.Infrastructure.Data
             NotificationModelBuilder.CreateModel(modelBuilder);
             AuditModelBuilder.CreateModel(modelBuilder);
             DatabaseModelBuilder.CreateModel(modelBuilder);
+#endif
             this.OnEndModelCreating(modelBuilder);
         }
     }

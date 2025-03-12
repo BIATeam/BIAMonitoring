@@ -8,15 +8,18 @@ namespace BIATeam.BIAMonitoring.Domain.User.Services
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using BIA.Net.Core.Domain.Dto.User;
+#if BIA_FRONT_FEATURE
     using BIATeam.BIAMonitoring.Domain.Dto.User;
     using BIATeam.BIAMonitoring.Domain.User.Entities;
     using BIATeam.BIAMonitoring.Domain.User.Models;
+#endif
 
     /// <summary>
     /// Interface UserIdentityKey Domain Service.
     /// </summary>
     public interface IUserIdentityKeyDomainService
     {
+#if BIA_FRONT_FEATURE
         /// <summary>
         /// Checks the database identity key.
         /// </summary>
@@ -58,6 +61,7 @@ namespace BIATeam.BIAMonitoring.Domain.User.Services
         /// <param name="userFromDirectory">The user from directory.</param>
         /// <returns>The directory identity key.</returns>
         string GetDirectoryIdentityKey(UserFromDirectory userFromDirectory);
+#endif
 
         /// <summary>
         /// Gets the directory identity key.

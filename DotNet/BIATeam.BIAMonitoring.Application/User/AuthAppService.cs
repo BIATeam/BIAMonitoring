@@ -58,6 +58,7 @@ namespace BIATeam.BIAMonitoring.Application.User
         /// The domain section in the BiaNet configuration.
         /// </summary>
         private readonly IEnumerable<LdapDomain> ldapDomains;
+#if BIA_FRONT_FEATURE
 
         /// <summary>
         /// The role section in the BiaNet configuration.
@@ -85,7 +86,13 @@ namespace BIATeam.BIAMonitoring.Application.User
         private readonly IRoleAppService roleAppService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthAppService"/> class.
+        /// The ldap repository service.
+        /// </summary>
+        private readonly ILdapRepositoryHelper ldapRepositoryHelper;
+#endif
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthAppService" /> class.
         /// </summary>
         /// <param name="userAppService">The user application service.</param>
         /// <param name="teamAppService">The team application service.</param>
@@ -98,31 +105,39 @@ namespace BIATeam.BIAMonitoring.Application.User
         /// <param name="configuration">The configuration.</param>
         /// <param name="biaNetconfiguration">The bia netconfiguration.</param>
         /// <param name="userDirectoryHelper">The user directory helper.</param>
+        /// <param name="ldapRepositoryHelper">The LDAP repository helper.</param>
         public AuthAppService(
+#if BIA_FRONT_FEATURE
             IUserAppService userAppService,
             ITeamAppService teamAppService,
             IRoleAppService roleAppService,
             Domain.RepoContract.IIdentityProviderRepository identityProviderRepository,
+#endif
             IJwtFactory jwtFactory,
             IPrincipal principal,
             IUserPermissionDomainService userPermissionDomainService,
             ILogger<AuthAppService> logger,
             IConfiguration configuration,
             IOptions<BiaNetSection> biaNetconfiguration,
-            IUserDirectoryRepository<UserFromDirectory> userDirectoryHelper)
+            IUserDirectoryRepository<UserFromDirectory> userDirectoryHelper,
+            ILdapRepositoryHelper ldapRepositoryHelper)
         {
+#if BIA_FRONT_FEATURE
             this.userAppService = userAppService;
             this.teamAppService = teamAppService;
             this.roleAppService = roleAppService;
             this.identityProviderRepository = identityProviderRepository;
             this.rolesConfiguration = biaNetconfiguration.Value.Roles;
+#endif
             this.jwtFactory = jwtFactory;
             this.claimsPrincipal = principal as BiaClaimsPrincipal;
             this.userPermissionDomainService = userPermissionDomainService;
             this.logger = logger;
             this.userDirectoryHelper = userDirectoryHelper;
             this.ldapDomains = biaNetconfiguration.Value.Authentication.LdapDomains;
+            this.ldapRepositoryHelper = ldapRepositoryHelper;
         }
+#if BIA_BACK_TO_BACK_AUTH
 
         /// <inheritdoc cref="IAuthAppService.LoginAsync"/>
         public async Task<string> LoginAsync()
@@ -161,6 +176,8 @@ namespace BIATeam.BIAMonitoring.Application.User
 
             return authInfo?.Token;
         }
+#endif
+#if BIA_FRONT_FEATURE
 
         /// <inheritdoc cref="IAuthAppService.LoginOnTeamsAsync"/>
         public async Task<AuthInfoDto<AdditionalInfoDto>> LoginOnTeamsAsync(LoginParamDto loginParam)
@@ -179,7 +196,6 @@ namespace BIATeam.BIAMonitoring.Application.User
 
             // Get Global Roles
             List<string> globalRoles = await this.GetGlobalRolesAsync(sid: sid, domain: domain, userInfo: userInfo);
-            List<int> roleIds = GetRoleIds(globalRoles);
 
             // Fill UserInfo
             userInfo = await this.CreateOrUpdateUserInDatabase(sid, identityKey, userInfo, globalRoles);
@@ -191,6 +207,8 @@ namespace BIATeam.BIAMonitoring.Application.User
                 IEnumerable<string> userAppRootRoles = await this.roleAppService.GetUserRolesAsync(userInfo.Id);
                 globalRoles.AddRange(userAppRootRoles);
             }
+
+            List<int> roleIds = GetRoleIds(globalRoles);
 
             // Get Permissions
             List<string> userPermissions = this.userPermissionDomainService.TranslateRolesInPermissions(globalRoles, loginParam.LightToken);
@@ -259,6 +277,7 @@ namespace BIATeam.BIAMonitoring.Application.User
 
             return roleIds;
         }
+#endif
 
         /// <summary>
         /// Checks the user permissions.
@@ -353,7 +372,18 @@ namespace BIATeam.BIAMonitoring.Application.User
             if (this.claimsPrincipal.Identity.Name?.Contains('\\') == true)
             {
                 domain = this.claimsPrincipal.Identity.Name.Split('\\').FirstOrDefault();
-                if (!this.ldapDomains.Any(ld => ld.Name.Equals(domain)))
+                if (
+                        !this.ldapDomains.Any(ld => ld.Name.Equals(domain))
+                        &&
+                        !(
+                            this.ldapDomains.Any(ld => this.ldapRepositoryHelper.IsLocalMachineName(ld.Name, true))
+                            &&
+                            this.ldapRepositoryHelper.IsLocalMachineName(domain, false))
+                        &&
+                        !(
+                            this.ldapDomains.Any(ld => this.ldapRepositoryHelper.IsServerDomain(ld.Name, true))
+                            &&
+                            this.ldapRepositoryHelper.IsServerDomain(domain, false)))
                 {
                     this.logger.LogInformation("Unauthorized because bad domain");
                     throw new UnauthorizedException();
@@ -362,6 +392,7 @@ namespace BIATeam.BIAMonitoring.Application.User
 
             return domain;
         }
+#if BIA_FRONT_FEATURE
 
         /// <summary>
         /// Gets the user information.
@@ -635,5 +666,6 @@ namespace BIATeam.BIAMonitoring.Application.User
 
             return allRoles;
         }
+#endif
     }
 }

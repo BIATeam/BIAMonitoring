@@ -50,6 +50,8 @@ namespace BIATeam.BIAMonitoring.WorkerService
                 })
                 .ConfigureServices((hostingContext, services) =>
                 {
+#if BIA_FRONT_FEATURE
+#endif
                     IConfiguration configuration = hostingContext.Configuration;
                     startup = new Startup(configuration);
                     startup.ConfigureServices(services);

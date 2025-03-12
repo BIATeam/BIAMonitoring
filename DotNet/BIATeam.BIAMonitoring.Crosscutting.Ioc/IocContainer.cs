@@ -21,15 +21,17 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Ioc
     using BIA.Net.Core.IocContainer;
     using BIA.Net.Core.Presentation.Common.Features.HubForClients;
     using BIATeam.BIAMonitoring.Application.User;
-    using BIATeam.BIAMonitoring.Domain.RepoContract;
     using BIATeam.BIAMonitoring.Domain.User.Models;
     using BIATeam.BIAMonitoring.Infrastructure.Data;
-    using BIATeam.BIAMonitoring.Infrastructure.Data.Features;
     using BIATeam.BIAMonitoring.Infrastructure.Service.Repositories;
     using Hangfire;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+#if BIA_FRONT_FEATURE
+    using BIATeam.BIAMonitoring.Domain.RepoContract;
+    using BIATeam.BIAMonitoring.Infrastructure.Data.Features;
+#endif
 
     /// <summary>
     /// The IoC Container.
@@ -120,7 +122,7 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Ioc
 
         private static void ConfigureInfrastructureDataContainer(IServiceCollection collection, IConfiguration configuration)
         {
-            string connectionString = configuration.GetConnectionString("BIAMonitoringDatabase");
+            string connectionString = configuration.GetConnectionString("ProjectDatabase");
 
             // Infrastructure Data Layer
             collection.AddDbContext<IQueryableUnitOfWork, DataContext>(options =>
@@ -153,8 +155,10 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Ioc
                 serviceLifetime: ServiceLifetime.Transient);
 
             collection.AddScoped<DataContextFactory>();
+#if BIA_FRONT_FEATURE
             collection.AddSingleton<IAuditFeature, AuditFeature>();
             collection.AddSingleton<BIA.Net.Core.Application.Services.IAuditFeatureService, BIA.Net.Core.Application.Services.AuditFeatureService>();
+#endif
         }
 
 #pragma warning disable S1172 // Unused method parameters should be removed
@@ -162,6 +166,7 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Ioc
 #pragma warning restore S1172 // Unused method parameters should be removed
         {
             collection.AddSingleton<IUserDirectoryRepository<UserFromDirectory>, LdapRepository>();
+#if BIA_FRONT_FEATURE
             collection.AddHttpClient<IIdentityProviderRepository, IdentityProviderRepository>().ConfigurePrimaryHttpMessageHandler(() => BiaIocContainer.CreateHttpClientHandler(biaNetSection, false));
             collection.AddTransient<IMailRepository, MailRepository>();
 
@@ -175,6 +180,7 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Ioc
             }
 
             collection.AddHttpClient<IIdentityProviderRepository, IdentityProviderRepository>().ConfigurePrimaryHttpMessageHandler(() => BiaIocContainer.CreateHttpClientHandler(biaNetSection, false));
+#endif
         }
     }
 }

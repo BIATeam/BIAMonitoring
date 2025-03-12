@@ -12,11 +12,14 @@ namespace BIATeam.BIAMonitoring.Application.User
     /// </summary>
     public interface IAuthAppService
     {
+#if BIA_BACK_TO_BACK_AUTH
         /// <summary>
         /// Logins.
         /// </summary>
         /// <returns>The JWT.</returns>
         Task<string> LoginAsync();
+#endif
+#if BIA_FRONT_FEATURE
 
         /// <summary>
         /// Logins the on teams asynchronous.
@@ -24,5 +27,6 @@ namespace BIATeam.BIAMonitoring.Application.User
         /// <param name="loginParam">The login parameter.</param>
         /// <returns>AuthInfo.</returns>
         Task<AuthInfoDto<AdditionalInfoDto>> LoginOnTeamsAsync(LoginParamDto loginParam);
+#endif
     }
 }

@@ -8,15 +8,18 @@ namespace BIATeam.BIAMonitoring.Domain.User.Services
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using BIA.Net.Core.Domain.Dto.User;
+#if BIA_FRONT_FEATURE
     using BIATeam.BIAMonitoring.Domain.Dto.User;
     using BIATeam.BIAMonitoring.Domain.User.Entities;
     using BIATeam.BIAMonitoring.Domain.User.Models;
+#endif
 
     /// <summary>
     /// This class MAnage the identity key during authentication and relation beetween Database, Directory and identity Provider.
     /// </summary>
     public class UserIdentityKeyDomainService : IUserIdentityKeyDomainService
     {
+#if BIA_FRONT_FEATURE
         // -------------------------------- DataBase EntityKey --------------------------------------
 
         /// <summary>
@@ -90,6 +93,7 @@ namespace BIATeam.BIAMonitoring.Domain.User.Services
         {
             return userFromDirectory.Login;
         }
+#endif
 
         /// <summary>
         /// Gets the Identity Key to compare with User in database.

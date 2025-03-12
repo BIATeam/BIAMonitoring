@@ -6,6 +6,8 @@ namespace BIATeam.BIAMonitoring.DeployDB
 {
     using System;
     using System.Threading.Tasks;
+    using BIA.Net.Core.Application.Archive;
+    using BIA.Net.Core.Application.Clean;
     using BIATeam.BIAMonitoring.Application.Job;
     using BIATeam.BIAMonitoring.Crosscutting.Common;
     using BIATeam.BIAMonitoring.Infrastructure.Data;
@@ -43,7 +45,7 @@ namespace BIATeam.BIAMonitoring.DeployDB
 
                     services.AddDbContext<DataContext>(options =>
                     {
-                        options.UseSqlServer(configuration.GetConnectionString("BIAMonitoringDatabase"));
+                        options.UseSqlServer(configuration.GetConnectionString("ProjectDatabase"));
                     });
                     services.AddHostedService<DeployDBService>();
 
@@ -55,12 +57,14 @@ namespace BIATeam.BIAMonitoring.DeployDB
                     });
                     services.AddHangfire(config =>
                     {
-                        config.UseSqlServerStorage(configuration.GetConnectionString("BIAMonitoringDatabase"));
+                        config.UseSqlServerStorage(configuration.GetConnectionString("ProjectDatabase"));
 
                         // Initialize here the recuring jobs
+#if BIA_FRONT_FEATURE
                         string projectName = configuration["Project:Name"];
                         RecurringJob.AddOrUpdate<WakeUpTask>($"{projectName}.{typeof(WakeUpTask).Name}", t => t.Run(), configuration["Tasks:WakeUp:CRON"]);
                         RecurringJob.AddOrUpdate<SynchronizeUserTask>($"{projectName}.{typeof(SynchronizeUserTask).Name}", t => t.Run(), configuration["Tasks:SynchronizeUser:CRON"]);
+#endif
                     });
                 })
                 .ConfigureLogging((hostingContext, logging) =>

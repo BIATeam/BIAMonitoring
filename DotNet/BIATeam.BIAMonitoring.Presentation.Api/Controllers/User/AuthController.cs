@@ -33,6 +33,7 @@ namespace BIATeam.BIAMonitoring.Presentation.Api.Controllers.User
         {
             this.authService = authService;
         }
+#if BIA_FRONT_FEATURE
 
         /// <summary>
         /// The login action.
@@ -110,6 +111,8 @@ namespace BIATeam.BIAMonitoring.Presentation.Api.Controllers.User
         {
             return this.Ok(Constants.Application.FrontEndVersion);
         }
+#endif
+#if BIA_BACK_TO_BACK_AUTH
 
         /// <summary>
         /// The login action.
@@ -139,5 +142,6 @@ namespace BIATeam.BIAMonitoring.Presentation.Api.Controllers.User
                 return this.Forbid(ex.Message);
             }
         }
+#endif
     }
 }

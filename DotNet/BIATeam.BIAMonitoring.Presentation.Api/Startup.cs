@@ -84,7 +84,6 @@ namespace BIATeam.BIAMonitoring.Presentation.Api
 
             // Configure IoC for classes not in the API project.
             IocContainer.ConfigureContainer(services, this.configuration, true);
-            services.AddTransient<Microsoft.AspNetCore.Authentication.IClaimsTransformation, Application.BiaClaimsTransformation>();
         }
 
         /// <summary>
@@ -131,7 +130,9 @@ namespace BIATeam.BIAMonitoring.Presentation.Api
             hangfireDashboardAuthorizations.Authorization = new[] { new HangfireAuthorizationFilter(false, "Background_Task_Admin", this.biaNetSection.Jwt.SecretKey, jwtFactory) };
             hangfireDashboardAuthorizations.AuthorizationReadOnly = new[] { new HangfireAuthorizationFilter(true, "Background_Task_Read_Only", this.biaNetSection.Jwt.SecretKey, jwtFactory) };
 
+#if BIA_FRONT_FEATURE
             app.ApplicationServices.GetRequiredService<IAuditFeatureService>().EnableAuditFeatures();
+#endif
             app.UseBiaApiFeatures(this.biaNetSection.ApiFeatures, hangfireDashboardAuthorizations);
         }
     }
