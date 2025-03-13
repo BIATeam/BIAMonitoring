@@ -1,0 +1,40 @@
+{
+  "Generations": [
+    {
+      "DateTime": "2025-03-12T10:37:19.8568693+01:00",
+      "EntityName": "DbEngineType",
+      "EntityNamespace": "BIATeam.BIAMonitoring.Domain.Database.Entities",
+      "Domain": "Database",
+      "PropertyMappings": [
+        {
+          "EntityPropertyCompositeName": "Id",
+          "MappingName": "Id",
+          "IsRequired": false
+        },
+        {
+          "EntityPropertyCompositeName": "Name",
+          "MappingName": "Name",
+          "IsRequired": true
+        }
+      ]
+    },
+    {
+      "DateTime": "2025-03-12T10:37:36.3723943+01:00",
+      "EntityName": "HangfireVersion",
+      "EntityNamespace": "BIATeam.BIAMonitoring.Domain.Database.Entities",
+      "Domain": "Database",
+      "PropertyMappings": [
+        {
+          "EntityPropertyCompositeName": "Id",
+          "MappingName": "Id",
+          "IsRequired": false
+        },
+        {
+          "EntityPropertyCompositeName": "Version",
+          "MappingName": "Version",
+          "IsRequired": true
+        }
+      ]
+    }
+  ]
+}

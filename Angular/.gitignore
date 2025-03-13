@@ -54,3 +54,6 @@ src/config.json
 .dart_tool/package_config.json
 
 .bia/option/*
+.bia/crud/*
+.bia/crud-parent/*
+.bia/team/*
