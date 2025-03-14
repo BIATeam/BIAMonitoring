@@ -1,0 +1,10 @@
+<app-db-engine-type-form
+  *ngIf="crudItemService.crudItem$ | async; let crudItem"
+  [crudItem]="crudItem"
+  [fields]="crudConfiguration.fieldsConfig.columns"
+  [dictOptionDtos]="(dbEngineTypeService.optionsService.dictOptionDtos$ | async) ?? []"
+  (cancel)="onCancelled()"
+  (save)="onSubmitted($event)"></app-db-engine-type-form>
+<bia-spinner
+  *ngIf="dbEngineTypeService.loadingGet$ | async"
+  [overlay]="true"></bia-spinner>

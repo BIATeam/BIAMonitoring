@@ -40,7 +40,7 @@ namespace BIATeam.BIAMonitoring.Presentation.Api.Controllers.Database
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Authorize(Roles = Rights.HangfireVersions.Options)]
+        [Authorize(Roles = Rights.HangfireVersionOptions.Options)]
         public async Task<IActionResult> GetAllOptions()
         {
             var results = await this.hangfireVersionOptionService.GetAllOptionsAsync();

@@ -50,8 +50,7 @@
       //Regenerate the SecretKey at each installation => It force reauthent => Checks the client version during authentication => and force the client to refresh
       "SecretKey": "7C14439A64673E9AF75EE7AF5B71A7C8D901C90B078EB7F2315C153D31B6275B22663F51A898EEEC7027A2911D7D643038AAFE768AF2E47F8488B6129F66AFA3"
     },
-    "Roles": [
-    ],
+    "Roles": [],
     "UserProfile": {
       "url": "http://localhost/DMIndex/UserProfile/GetUserProfile"
     },
@@ -59,8 +58,14 @@
       {
         "Label": "English",
         "Code": "en-GB",
-        "AcceptedCodes": [ "en-GB", "default", "en" ],
-        "IsDefaultForCountryCodes": [ "GB" ],
+        "AcceptedCodes": [
+          "en-GB",
+          "default",
+          "en"
+        ],
+        "IsDefaultForCountryCodes": [
+          "GB"
+        ],
         "DateFormat": "dd/MM/yyyy",
         "TimeFormat": "HH:mm",
         "TimeFormatSec": "HH:mm:ss",
@@ -70,8 +75,12 @@
       {
         "Label": "English US",
         "Code": "en-US",
-        "AcceptedCodes": [ "en-US" ],
-        "IsDefaultForCountryCodes": [ "US" ],
+        "AcceptedCodes": [
+          "en-US"
+        ],
+        "IsDefaultForCountryCodes": [
+          "US"
+        ],
         "DateFormat": "MM/dd/yyyy",
         "TimeFormat": "h:mm a",
         "TimeFormatSec": "h:mm:ss a",
@@ -81,8 +90,13 @@
       {
         "Label": "Deutsh",
         "Code": "de-DE",
-        "AcceptedCodes": [ "de-DE", "de" ],
-        "IsDefaultForCountryCodes": [ "DE" ],
+        "AcceptedCodes": [
+          "de-DE",
+          "de"
+        ],
+        "IsDefaultForCountryCodes": [
+          "DE"
+        ],
         "DateFormat": "dd.MM.yyyy",
         "TimeFormat": "HH:mm",
         "TimeFormatSec": "HH:mm:ss a",
@@ -92,8 +106,13 @@
       {
         "Label": "Española",
         "Code": "es-ES",
-        "AcceptedCodes": [ "es-ES", "es" ],
-        "IsDefaultForCountryCodes": [ "ES" ],
+        "AcceptedCodes": [
+          "es-ES",
+          "es"
+        ],
+        "IsDefaultForCountryCodes": [
+          "ES"
+        ],
         "DateFormat": "dd/MM/yyyy",
         "TimeFormat": "H:mm",
         "TimeFormatSec": "H:mm:ss",
@@ -103,8 +122,12 @@
       {
         "Label": "Española MX",
         "Code": "es-MX",
-        "AcceptedCodes": [ "es-MX" ],
-        "IsDefaultForCountryCodes": [ "MX" ],
+        "AcceptedCodes": [
+          "es-MX"
+        ],
+        "IsDefaultForCountryCodes": [
+          "MX"
+        ],
         "DateFormat": "dd/MM/yyyy",
         "TimeFormat": "hh:mm a",
         "TimeFormatSec": "hh:mm:ss a",
@@ -114,8 +137,14 @@
       {
         "Label": "Français",
         "Code": "fr-FR",
-        "AcceptedCodes": [ "fr-FR", "fr" ],
-        "IsDefaultForCountryCodes": [ "FR", "MA" ],
+        "AcceptedCodes": [
+          "fr-FR",
+          "fr"
+        ],
+        "IsDefaultForCountryCodes": [
+          "FR",
+          "MA"
+        ],
         "DateFormat": "dd/MM/yyyy",
         "TimeFormat": "HH:mm",
         "TimeFormatSec": "HH:mm:ss",
@@ -125,30 +154,107 @@
     ],
     "Permissions": [
       // BIAToolKit - Begin Config
+      // BIAToolKit - Begin Partial Config DbEngineTypeOption
+      // DbEngineTypeOption
+      {
+        "Name": "DbEngineType_Options",
+        "Roles": [
+          "Admin",
+          "Site_Member"
+        ]
+      },
+      // BIAToolKit - End Partial Config DbEngineTypeOption
       // BIAToolKit - Begin Partial Config DbEngineType
       // DbEngineType
       {
-        "Name": "DbEngineType_Options",
-        "Roles": [ "Admin", "Site_Member" ]
+        "Names": [
+          "DbEngineType_List_Access",
+          "DbEngineType_Read"
+        ],
+        "Roles": [
+          "Admin",
+          "Site_Member"
+        ]
+      },
+      {
+        "Names": [
+          "DbEngineType_Update",
+          "DbEngineType_Save"
+        ],
+        "Roles": [
+          "Site_Admin"
+        ]
+      },
+      {
+        "Names": [
+          "DbEngineType_Create",
+          "DbEngineType_Delete"
+        ],
+        "Roles": [
+          "Site_Admin"
+        ]
       },
       // BIAToolKit - End Partial Config DbEngineType
-      // BIAToolKit - Begin Partial Config HangfireVersion
+      // BIAToolKit - Begin Partial Config HangfireVersionOption
       // HangfireVersion
       {
         "Name": "HangfireVersion_Options",
-        "Roles": [ "Admin", "Site_Member" ]
+        "Roles": [
+          "Admin",
+          "Site_Member"
+        ]
+      },
+      // BIAToolKit - End Partial Config HangfireVersionOption
+      // BIAToolKit - Begin Partial Config HangfireVersion
+      // HangfireVersion
+      {
+        "Names": [
+          "HangfireVersion_List_Access",
+          "HangfireVersion_Read"
+        ],
+        "Roles": [
+          "Admin",
+          "Site_Member"
+        ]
+      },
+      {
+        "Names": [
+          "HangfireVersion_Update",
+          "HangfireVersion_Save"
+        ],
+        "Roles": [
+          "Site_Admin"
+        ]
+      },
+      {
+        "Names": [
+          "HangfireVersion_Create",
+          "HangfireVersion_Delete"
+        ],
+        "Roles": [
+          "Site_Admin"
+        ]
       },
       // BIAToolKit - End Partial Config HangfireVersion
       // BIAToolKit - End Config
       // Home
       {
         "Name": "Home_Access",
-        "Roles": [ "Admin", "Site_Admin", "Site_Member", "User" ]
+        "Roles": [
+          "Admin",
+          "Site_Admin",
+          "Site_Member",
+          "User"
+        ]
       },
       // Log
       {
         "Name": "Logs_Create",
-        "Roles": [ "Admin", "Site_Admin", "Site_Member" ]
+        "Roles": [
+          "Admin",
+          "Site_Admin",
+          "Site_Member"
+        ]
       },
       // Member
       //{
@@ -162,79 +268,168 @@
       //},
       // Role
       {
-        "Names": [ "Roles_Options" ],
-        "Roles": [ "Admin", "UserManager", "User" ]
+        "Names": [
+          "Roles_Options"
+        ],
+        "Roles": [
+          "Admin",
+          "UserManager",
+          "User"
+        ]
       },
       {
-        "Names": [ "Roles_List" ],
-        "Roles": [ "Admin", "Site_Admin" ]
+        "Names": [
+          "Roles_List"
+        ],
+        "Roles": [
+          "Admin",
+          "Site_Admin"
+        ]
       },
       {
         "Name": "Roles_List_For_Current_User",
-        "Roles": [ "User", "Admin", "Site_Admin" ]
+        "Roles": [
+          "User",
+          "Admin",
+          "Site_Admin"
+        ]
       },
       // Language
       {
         "Name": "Languages_Options",
-        "Roles": [ "User", "Admin" ]
+        "Roles": [
+          "User",
+          "Admin"
+        ]
       },
       // Ldap Domain
       {
         "Name": "LdapDomains_List",
-        "Roles": [ "Admin", "UserManager", "Site_Admin" ]
+        "Roles": [
+          "Admin",
+          "UserManager",
+          "Site_Admin"
+        ]
       },
       // ProfileImage
       {
         "Name": "ProfileImage_Get",
-        "Roles": [ "User" ]
+        "Roles": [
+          "User"
+        ]
       },
       // Site
       {
-        "Names": [ "Site_Access_All", "Site_Create", "Site_Update", "Site_Delete", "Site_Save" ],
-        "Roles": [ "Admin" ]
+        "Names": [
+          "Site_Access_All",
+          "Site_Create",
+          "Site_Update",
+          "Site_Delete",
+          "Site_Save"
+        ],
+        "Roles": [
+          "Admin"
+        ]
       },
       {
-        "Names": [ "Site_List_Access", "Site_Read", "Site_Member_List_Access" ],
-        "Roles": [ "Admin", "Site_Member" ]
+        "Names": [
+          "Site_List_Access",
+          "Site_Read",
+          "Site_Member_List_Access"
+        ],
+        "Roles": [
+          "Admin",
+          "Site_Member"
+        ]
       },
       {
-        "Names": [ "Site_Member_Create", "Site_Member_Read", "Site_Member_Update", "Site_Member_Delete", "Site_Member_Save" ],
-        "Roles": [ "Admin", "Site_Admin" ]
+        "Names": [
+          "Site_Member_Create",
+          "Site_Member_Read",
+          "Site_Member_Update",
+          "Site_Member_Delete",
+          "Site_Member_Save"
+        ],
+        "Roles": [
+          "Admin",
+          "Site_Admin"
+        ]
       },
       {
-        "Names": [ "Site_View_Add_TeamView", "Site_View_Update_TeamView", "Site_View_Set_Default_TeamView", "Site_View_Assign_To_Team" ],
-        "Roles": [ "Admin", "Site_Admin" ]
+        "Names": [
+          "Site_View_Add_TeamView",
+          "Site_View_Update_TeamView",
+          "Site_View_Set_Default_TeamView",
+          "Site_View_Assign_To_Team"
+        ],
+        "Roles": [
+          "Admin",
+          "Site_Admin"
+        ]
       },
       // Team
       {
-        "Names": [ "Team_Access_All", "Team_Options" ],
-        "Roles": [ "Admin" ]
+        "Names": [
+          "Team_Access_All",
+          "Team_Options"
+        ],
+        "Roles": [
+          "Admin"
+        ]
       },
       {
-        "Names": [ "Team_List_Access" ],
-        "Roles": [ "User" ]
+        "Names": [
+          "Team_List_Access"
+        ],
+        "Roles": [
+          "User"
+        ]
       },
       {
         "Name": "Team_Set_Default_Team",
-        "Roles": [ "Admin", "Site_Admin", "Site_Member" ]
+        "Roles": [
+          "Admin",
+          "Site_Admin",
+          "Site_Member"
+        ]
       },
       {
         "Name": "Team_Set_Default_Roles",
-        "Roles": [ "User", "Admin", "Site_Admin", "Site_Member" ]
+        "Roles": [
+          "User",
+          "Admin",
+          "Site_Admin",
+          "Site_Member"
+        ]
       },
       // User
       {
-        "Names": [ "User_Options" ],
-        "Roles": [ "Admin", "User" ]
+        "Names": [
+          "User_Options"
+        ],
+        "Roles": [
+          "Admin",
+          "User"
+        ]
       },
       // View
       {
         "Name": "View_List",
-        "Roles": [ "Admin", "User" ]
+        "Roles": [
+          "Admin",
+          "User"
+        ]
       },
       {
-        "Names": [ "View_Add_UserView", "View_Update_UserView", "View_Delete_UserView", "View_Set_Default_UserView" ],
-        "Roles": [ "User" ]
+        "Names": [
+          "View_Add_UserView",
+          "View_Update_UserView",
+          "View_Delete_UserView",
+          "View_Set_Default_UserView"
+        ],
+        "Roles": [
+          "User"
+        ]
       },
       // this functionnality is deprecated (the unassign do the job)
       //{
@@ -243,22 +438,40 @@
       //},
       // Notifications
       {
-        "Names": [ "Notification_List_Access", "Notification_Delete", "Notification_Read" ],
-        "Roles": [ "Admin", "User" ]
+        "Names": [
+          "Notification_List_Access",
+          "Notification_Delete",
+          "Notification_Read"
+        ],
+        "Roles": [
+          "Admin",
+          "User"
+        ]
       },
       {
-        "Names": [ "Notification_Update", "Notification_Create", "NotificationType_Options" ],
-        "Roles": [ "Admin" ]
+        "Names": [
+          "Notification_Update",
+          "Notification_Create",
+          "NotificationType_Options"
+        ],
+        "Roles": [
+          "Admin"
+        ]
       },
       {
         "Name": "Background_Task_Admin",
         "LightToken": true,
-        "Roles": [ "Admin", "Back_Admin" ]
+        "Roles": [
+          "Admin",
+          "Back_Admin"
+        ]
       },
       {
         "Name": "Background_Task_Read_Only",
         "LightToken": true,
-        "Roles": [ "Back_Read_Only" ]
+        "Roles": [
+          "Back_Read_Only"
+        ]
       }
     ]
   }

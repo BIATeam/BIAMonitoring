@@ -1,5 +1,7 @@
 {
   "app": {
+    "dbEngineTypes": "db engine types",
+    "hangfireVersions": "hangfire versions",
     "members": "Miembros",
     "sites": "Sitios",
     "teams": "Equipos",

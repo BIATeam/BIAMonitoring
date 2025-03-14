@@ -330,9 +330,48 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Common
         // BIAToolKit - Begin Partial Rights DbEngineType
 
         /// <summary>
-        /// The dbEngingeTypes rights.
+        /// The dbEngineTypes rights.
         /// </summary>
-        public static class DbEngingeTypes
+        public static class DbEngineTypes
+        {
+            /// <summary>
+            /// The right to access to the list of dbEngineTypes.
+            /// </summary>
+            public const string ListAccess = "DbEngineType_List_Access";
+
+            /// <summary>
+            /// The right to create dbEngineTypes.
+            /// </summary>
+            public const string Create = "DbEngineType_Create";
+
+            /// <summary>
+            /// The right to read dbEngineTypes.
+            /// </summary>
+            public const string Read = "DbEngineType_Read";
+
+            /// <summary>
+            /// The right to update dbEngineTypes.
+            /// </summary>
+            public const string Update = "DbEngineType_Update";
+
+            /// <summary>
+            /// The right to delete dbEngineTypes.
+            /// </summary>
+            public const string Delete = "DbEngineType_Delete";
+
+            /// <summary>
+            /// The right to save dbEngineTypes.
+            /// </summary>
+            public const string Save = "DbEngineType_Save";
+        }
+
+        // BIAToolKit - End Partial Rights DbEngineType
+        // BIAToolKit - Begin Partial Rights DbEngineTypeOptions
+
+        /// <summary>
+        /// The dbEngineTypes rights.
+        /// </summary>
+        public static class DbEngineTypeOptions
         {
             /// <summary>
             /// The right to access to the list of dbEngingeTypes (options only).
@@ -340,7 +379,7 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Common
             public const string Options = "DbEngineType_Options";
         }
 
-        // BIAToolKit - End Partial Rights DbEngineType
+        // BIAToolKit - End Partial Rights DbEngineTypeOptions
         // BIAToolKit - Begin Partial Rights HangfireVersion
 
         /// <summary>
@@ -349,12 +388,50 @@ namespace BIATeam.BIAMonitoring.Crosscutting.Common
         public static class HangfireVersions
         {
             /// <summary>
+            /// The right to access to the list of hangfireVersions.
+            /// </summary>
+            public const string ListAccess = "HangfireVersion_List_Access";
+
+            /// <summary>
+            /// The right to create hangfireVersions.
+            /// </summary>
+            public const string Create = "HangfireVersion_Create";
+
+            /// <summary>
+            /// The right to read hangfireVersions.
+            /// </summary>
+            public const string Read = "HangfireVersion_Read";
+
+            /// <summary>
+            /// The right to update hangfireVersions.
+            /// </summary>
+            public const string Update = "HangfireVersion_Update";
+
+            /// <summary>
+            /// The right to delete hangfireVersions.
+            /// </summary>
+            public const string Delete = "HangfireVersion_Delete";
+
+            /// <summary>
+            /// The right to save hangfireVersions.
+            /// </summary>
+            public const string Save = "HangfireVersion_Save";
+        }
+
+        // BIAToolKit - End Partial Rights HangfireVersion
+        // BIAToolKit - Begin Partial Rights HangfireVersionOptions
+
+        /// <summary>
+        /// The hangfireVersions rights.
+        /// </summary>
+        public static class HangfireVersionOptions
+        {
+            /// <summary>
             /// The right to access to the list of hangfireVersions (options only).
             /// </summary>
             public const string Options = "HangfireVersion_Options";
         }
-
-        // BIAToolKit - End Partial Rights HangfireVersion
+        // BIAToolKit - End Partial Rights HangfireVersionOptions
         // BIAToolKit - End Rights
     }
 }

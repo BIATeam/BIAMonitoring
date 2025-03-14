@@ -15,6 +15,20 @@ export const NAVIGATION: BiaNavigation[] = [
     icon: 'pi pi-home',
   },
   /// BIAToolKit - Begin Navigation
+  /// BIAToolKit - Begin Partial Navigation DbEngineType
+  {
+    labelKey: 'app.dbEngineTypes',
+    permissions: [Permission.DbEngineType_List_Access],
+    path: ['/db-engine-types'],
+  },
+  /// BIAToolKit - End Partial Navigation DbEngineType
+  /// BIAToolKit - Begin Partial Navigation HangfireVersion
+  {
+    labelKey: 'app.hangfireVersions',
+    permissions: [Permission.HangfireVersion_List_Access],
+    path: ['/hangfire-versions'],
+  },
+  /// BIAToolKit - End Partial Navigation HangfireVersion
   /// BIAToolKit - End Navigation
   {
     labelKey: 'bia.administration',

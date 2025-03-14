@@ -1,0 +1,6 @@
+<app-db-engine-type-form
+  [isAdd]="true"
+  [fields]="crudConfiguration.fieldsConfig.columns"
+  [dictOptionDtos]="(dbEngineTypeService.optionsService.dictOptionDtos$ | async) ?? []"
+  (cancel)="onCancelled()"
+  (save)="onSubmitted($event)"></app-db-engine-type-form>

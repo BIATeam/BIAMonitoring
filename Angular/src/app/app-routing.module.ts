@@ -15,6 +15,32 @@ const routes: Routes = [
         component: PageLayoutComponent,
         children: [
           /// BIAToolKit - Begin Routing
+          /// BIAToolKit - Begin Partial Routing DbEngineType
+          {
+            path: 'db-engine-types',
+            data: {
+              breadcrumb: 'app.db-engine-types',
+              canNavigate: true,
+            },
+            loadChildren: () =>
+              import('./features/db-engine-types/db-engine-type.module').then(
+                m => m.DbEngineTypeModule
+              ),
+          },
+          /// BIAToolKit - End Partial Routing DbEngineType
+          /// BIAToolKit - Begin Partial Routing HangfireVersion
+          {
+            path: 'hangfire-versions',
+            data: {
+              breadcrumb: 'app.hangfire-versions',
+              canNavigate: true,
+            },
+            loadChildren: () =>
+              import(
+                './features/hangfire-versions/hangfire-version.module'
+              ).then(m => m.HangfireVersionModule),
+          },
+          /// BIAToolKit - End Partial Routing HangfireVersion
           /// BIAToolKit - End Routing
           {
             path: 'sites',

@@ -40,7 +40,7 @@ namespace BIATeam.BIAMonitoring.Presentation.Api.Controllers.Database
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Authorize(Roles = Rights.DbEngingeTypes.Options)]
+        [Authorize(Roles = Rights.DbEngineTypeOptions.Options)]
         public async Task<IActionResult> GetAllOptions()
         {
             var results = await this.dbEngineTypeOptionService.GetAllOptionsAsync();

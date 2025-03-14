@@ -1,0 +1,66 @@
+{
+  "CRUDGenerationHistory": [
+    {
+      "DisplayItem": "Name",
+      "OptionItems": [],
+      "Mapping": {
+        "Dto": "BIATeam.BIAMonitoring.Domain.Dto\\Database\\DbEngineTypeDto.cs",
+        "Type": "DotNet"
+      },
+      "Feature": "CRUD",
+      "HasParent": false,
+      "Domain": "Database",
+      "BiaFront": "Angular",
+      "Date": "2025-03-13T15:50:42.6615433+01:00",
+      "EntityNameSingular": "DbEngineType",
+      "EntityNamePlural": "DbEngineTypes",
+      "Generation": [
+        {
+          "GenerationType": "Front",
+          "FeatureType": "CRUD",
+          "Folder": "Angular",
+          "Template": "crud.zip",
+          "Type": "Angular"
+        },
+        {
+          "GenerationType": "WebApi",
+          "FeatureType": "CRUD",
+          "Folder": "DotNet",
+          "Template": "crud.zip",
+          "Type": "DotNet"
+        }
+      ]
+    },
+    {
+      "DisplayItem": "Version",
+      "OptionItems": [],
+      "Mapping": {
+        "Dto": "BIATeam.BIAMonitoring.Domain.Dto\\Database\\HangfireVersionDto.cs",
+        "Type": "DotNet"
+      },
+      "Feature": "CRUD",
+      "HasParent": false,
+      "Domain": "Database",
+      "BiaFront": "Angular",
+      "Date": "2025-03-13T15:51:18.3384803+01:00",
+      "EntityNameSingular": "HangfireVersion",
+      "EntityNamePlural": "HangfireVersions",
+      "Generation": [
+        {
+          "GenerationType": "Front",
+          "FeatureType": "CRUD",
+          "Folder": "Angular",
+          "Template": "crud.zip",
+          "Type": "Angular"
+        },
+        {
+          "GenerationType": "WebApi",
+          "FeatureType": "CRUD",
+          "Folder": "DotNet",
+          "Template": "crud.zip",
+          "Type": "DotNet"
+        }
+      ]
+    }
+  ]
+}

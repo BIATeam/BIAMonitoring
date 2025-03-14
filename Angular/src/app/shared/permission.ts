@@ -11,6 +11,22 @@ export enum Permission {
   Notification_Update = 'Notification_Update',
 
   /// BIAToolKit - Begin Permission
+  /// BIAToolKit - Begin Partial Permission DbEngineType
+  DbEngineType_Create = 'DbEngineType_Create',
+  DbEngineType_Delete = 'DbEngineType_Delete',
+  DbEngineType_List_Access = 'DbEngineType_List_Access',
+  DbEngineType_Read = 'DbEngineType_Read',
+  DbEngineType_Save = 'DbEngineType_Save',
+  DbEngineType_Update = 'DbEngineType_Update',
+  /// BIAToolKit - End Partial Permission DbEngineType
+  /// BIAToolKit - Begin Partial Permission HangfireVersion
+  HangfireVersion_Create = 'HangfireVersion_Create',
+  HangfireVersion_Delete = 'HangfireVersion_Delete',
+  HangfireVersion_List_Access = 'HangfireVersion_List_Access',
+  HangfireVersion_Read = 'HangfireVersion_Read',
+  HangfireVersion_Save = 'HangfireVersion_Save',
+  HangfireVersion_Update = 'HangfireVersion_Update',
+  /// BIAToolKit - End Partial Permission HangfireVersion
   /// BIAToolKit - End Permission
   Roles_List = 'Roles_List',
   Site_Create = 'Site_Create',

@@ -1,0 +1,10 @@
+<app-hangfire-version-form
+  *ngIf="crudItemService.crudItem$ | async; let crudItem"
+  [crudItem]="crudItem"
+  [fields]="crudConfiguration.fieldsConfig.columns"
+  [dictOptionDtos]="(hangfireVersionService.optionsService.dictOptionDtos$ | async) ?? []"
+  (cancel)="onCancelled()"
+  (save)="onSubmitted($event)"></app-hangfire-version-form>
+<bia-spinner
+  *ngIf="hangfireVersionService.loadingGet$ | async"
+  [overlay]="true"></bia-spinner>

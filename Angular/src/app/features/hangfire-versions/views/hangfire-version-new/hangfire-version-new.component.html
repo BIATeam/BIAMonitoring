@@ -1,0 +1,6 @@
+<app-hangfire-version-form
+  [isAdd]="true"
+  [fields]="crudConfiguration.fieldsConfig.columns"
+  [dictOptionDtos]="(hangfireVersionService.optionsService.dictOptionDtos$ | async) ?? []"
+  (cancel)="onCancelled()"
+  (save)="onSubmitted($event)"></app-hangfire-version-form>
