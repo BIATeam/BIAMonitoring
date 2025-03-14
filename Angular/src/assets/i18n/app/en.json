@@ -9,6 +9,22 @@
     "notifications": "Notifications",
     "maintenance-teams": "Maintenance Teams"
   },
+  "dbEngineType": {
+    "add": "Add db engine type",
+    "delete": "Delete db engine type",
+    "edit": "Edit db engine type",
+    "import": "Import db engine types",
+    "listOf": "List of db engine types",
+    "name": "Name"
+  },
+  "hangfireVersion": {
+    "add": "Add hangfire version",
+    "delete": "Delete hangfire version",
+    "edit": "Edit hangfire version",
+    "import": "Import hangfire versions",
+    "listOf": "List of hangfire versions",
+    "version": "Version"
+  },
   "member": {
     "add": "Add member",
     "import": "Import members",

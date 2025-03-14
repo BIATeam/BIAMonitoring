@@ -9,6 +9,22 @@
     "notifications": "Notifications",
     "maintenance-teams": "Equipes de maintenance"
   },
+  "dbEngineType": {
+    "add": "Ajouter un type de moteur de base de données",
+    "delete": "Supprimer le type de moteur de base de données",
+    "edit": "Modifier le type de moteur de base de données",
+    "import": "Importer des types de moteur de base de données",
+    "listOf": "Liste des types de moteur de base de données",
+    "name": "Nom"
+  },
+  "hangfireVersion": {
+    "add": "Ajouter une version de hangfire",
+    "delete": "Supprimer la version de hangfire",
+    "edit": "Modifier la version de hangfire",
+    "import": "Importer des versions de hangfire",
+    "listOf": "Liste des versions de hangfire",
+    "version": "Version"
+  },
   "member": {
     "add": "Ajouter membre",
     "import": "Importer membres",
