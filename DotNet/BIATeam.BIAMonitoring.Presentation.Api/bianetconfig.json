@@ -159,8 +159,7 @@
       {
         "Name": "DbEngineType_Options",
         "Roles": [
-          "Admin",
-          "Site_Member"
+          "User"
         ]
       },
       // BIAToolKit - End Partial Config DbEngineTypeOption
@@ -173,25 +172,18 @@
         ],
         "Roles": [
           "Admin",
-          "Site_Member"
+          "User"
         ]
       },
       {
         "Names": [
           "DbEngineType_Update",
-          "DbEngineType_Save"
-        ],
-        "Roles": [
-          "Site_Admin"
-        ]
-      },
-      {
-        "Names": [
+          "DbEngineType_Save",
           "DbEngineType_Create",
           "DbEngineType_Delete"
         ],
         "Roles": [
-          "Site_Admin"
+          "Admin"
         ]
       },
       // BIAToolKit - End Partial Config DbEngineType
@@ -200,8 +192,7 @@
       {
         "Name": "HangfireVersion_Options",
         "Roles": [
-          "Admin",
-          "Site_Member"
+          "User"
         ]
       },
       // BIAToolKit - End Partial Config HangfireVersionOption
@@ -214,25 +205,18 @@
         ],
         "Roles": [
           "Admin",
-          "Site_Member"
+          "User"
         ]
       },
       {
         "Names": [
           "HangfireVersion_Update",
-          "HangfireVersion_Save"
-        ],
-        "Roles": [
-          "Site_Admin"
-        ]
-      },
-      {
-        "Names": [
+          "HangfireVersion_Save",
           "HangfireVersion_Create",
           "HangfireVersion_Delete"
         ],
         "Roles": [
-          "Site_Admin"
+          "Admin"
         ]
       },
       // BIAToolKit - End Partial Config HangfireVersion
